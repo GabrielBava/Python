@@ -143,20 +143,31 @@ export function classifyScore(score) {
   return 'Estrutura inicial';
 }
 
-// answers: { [questionId]: optionIndex }
+// answers: { [questionId]: optionIndex }. Só considera perguntas realmente
+// presentes em `answers` — o Raio-X reaproveita este motor com um
+// subconjunto de SCORE_QUESTIONS, então perguntas não feitas não podem
+// contar como "respondidas com 0 pontos" (isso diluiria categorias com mais
+// de uma pergunta e inventaria pontos de atenção para categorias sequer
+// perguntadas). O score final é normalizado para 0–100 com base em quantas
+// perguntas foram de fato respondidas.
 export function computeScoreResult(answers) {
   const categoryTotals = {};
   const categoryCounts = {};
-  let score = 0;
+  let totalPoints = 0;
+  let answeredCount = 0;
 
   SCORE_QUESTIONS.forEach((q) => {
     const optionIndex = answers[q.id];
+    if (optionIndex === undefined) return;
     const option = q.options[optionIndex];
     const points = option ? option.points : 0;
-    score += points;
+    totalPoints += points;
+    answeredCount += 1;
     categoryTotals[q.category] = (categoryTotals[q.category] || 0) + points;
     categoryCounts[q.category] = (categoryCounts[q.category] || 0) + 10;
   });
+
+  const score = answeredCount > 0 ? Math.round((totalPoints / (answeredCount * 10)) * 100) : 0;
 
   const categoryStrength = Object.fromEntries(
     Object.keys(categoryTotals).map((cat) => [cat, categoryTotals[cat] / categoryCounts[cat]])
