@@ -1,0 +1,124 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  background: rgba(16, 16, 16, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-base) var(--ease), background var(--duration-base) var(--ease);
+}
+
+.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(16, 16, 16, 0.92);
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-base);
+  color: var(--text);
+}
+
+.brandRole {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navLink {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  transition: color var(--duration-fast) var(--ease);
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--text);
+}
+
+.desktopCta {
+  display: none;
+}
+
+.menuBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+.mobilePanel {
+  position: fixed;
+  inset: var(--header-height) 0 0 0;
+  background: var(--bg);
+  z-index: var(--z-header);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg) var(--container-pad) var(--space-xl);
+  gap: var(--space-lg);
+  overflow-y: auto;
+  animation: fadeIn var(--duration-base) var(--ease);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.mobileNavLink {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--text);
+  padding-block: var(--space-2xs);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobileFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 900px) {
+  .nav {
+    display: flex;
+  }
+  .desktopCta {
+    display: inline-flex;
+  }
+  .menuBtn {
+    display: none;
+  }
+}

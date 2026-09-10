@@ -1,0 +1,89 @@
+:root {
+  /* ===== Cores — base do ecossistema visual ===== */
+  --bg: #101010;
+  --bg-secondary: #161616;
+  --bg-tertiary: #181818;
+  --bg-elevated: #1c1c1c;
+
+  --accent: #1dc077;
+  --accent-dim: #17a568;
+  --accent-soft: rgba(29, 192, 119, 0.12);
+  --accent-soft-strong: rgba(29, 192, 119, 0.2);
+
+  --text: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #7a7a80;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(29, 192, 119, 0.35);
+
+  --danger: #e5484d;
+  --warning: #e6a23c;
+
+  /* ===== Tipografia ===== */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --fs-xs: clamp(0.75rem, 0.72rem + 0.1vw, 0.8125rem);
+  --fs-sm: clamp(0.8125rem, 0.78rem + 0.15vw, 0.9375rem);
+  --fs-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  --fs-md: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.625rem);
+  --fs-xl: clamp(1.625rem, 1.4rem + 1vw, 2.25rem);
+  --fs-2xl: clamp(2rem, 1.6rem + 1.8vw, 3.25rem);
+  --fs-3xl: clamp(2.5rem, 1.9rem + 2.6vw, 4.25rem);
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-normal: 1.55;
+  --lh-relaxed: 1.7;
+
+  /* ===== Espaçamento ===== */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 9rem;
+
+  --container-max: 1180px;
+  --container-narrow: 760px;
+  --container-pad: clamp(1.25rem, 4vw, 3rem);
+
+  /* ===== Forma ===== */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 12px 32px rgba(29, 192, 119, 0.18);
+
+  /* ===== Movimento ===== */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 520ms;
+
+  /* ===== Camadas ===== */
+  --z-header: 100;
+  --z-sticky-cta: 90;
+  --z-modal: 200;
+  --z-toast: 300;
+
+  --header-height: 72px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 60px;
+  }
+}

@@ -1,0 +1,31 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .wrap {
+    padding: var(--space-xl);
+  }
+}
+
+.title {
+  font-size: var(--fs-lg);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  margin-top: calc(var(--space-2xs) * -1);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}

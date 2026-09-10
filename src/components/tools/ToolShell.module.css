@@ -1,0 +1,46 @@
+.miniHero {
+  padding-block: var(--space-2xl) var(--space-xl);
+  text-align: center;
+}
+
+.miniHeroInner {
+  max-width: 680px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.badgeRow {
+  display: flex;
+  gap: var(--space-2xs);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.title {
+  font-size: var(--fs-2xl);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  max-width: 560px;
+}
+
+.explanation {
+  max-width: 680px;
+  margin: 0 auto var(--space-2xl);
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  text-align: center;
+}
+
+.toolArea {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-bottom: var(--space-3xl);
+}
