@@ -45,10 +45,23 @@ export default function Aposentadoria() {
   }
 
   function buildResultProps(leadPayload) {
+    // O próprio simulador já respondeu diretamente à pergunta que o levou
+    // até aqui (está ou não no ritmo) — isso é mais relevante do que as
+    // heurísticas genéricas de patrimônio/renda, então tem prioridade.
     const { priority, recommendation } = personalizeRecommendation({
       patrimonio: leadPayload.patrimonio_financeiro,
       renda: leadPayload.renda,
       objetivo: 'aposentadoria',
+      override: result.onTrack
+        ? {
+            priority: 'Acompanhamento do plano de aposentadoria',
+            recommendation:
+              'Seu ritmo atual parece compatível com a renda futura desejada — o próximo passo é formalizar esse plano e acompanhar se ele se mantém alinhado ao longo do tempo.',
+          }
+        : {
+            priority: 'Acelerar o ritmo de aposentadoria',
+            recommendation: `Para alinhar seu patrimônio à renda futura desejada, o aporte mensal estimado passaria para ${formatCurrency(result.suggestedMonthlyContribution)} — vale entender com calma as alternativas para isso.`,
+          },
     });
 
     return {

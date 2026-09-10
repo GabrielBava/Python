@@ -7,10 +7,15 @@ const HIGH_INCOME = ['20k-30k', '30k-50k', '50k-100k', 'acima-100k'];
 const LOW_WEALTH = ['nenhum', 'ate-50k', '50k-100k'];
 const HIGH_WEALTH = ['500k-1m', '1m-3m', 'acima-3m'];
 
-export function personalizeRecommendation({ patrimonio, renda, objetivo, categoryStrength } = {}) {
+export function personalizeRecommendation({ patrimonio, renda, objetivo, categoryStrength, override } = {}) {
+  // Permite que uma ferramenta com um achado direto e específico (ex.:
+  // Aposentadoria já sabe se o ritmo está ou não alinhado) substitua as
+  // heurísticas genéricas abaixo, que são inferências mais fracas.
+  if (override) return override;
+
   const weak = (cat) => categoryStrength && categoryStrength[cat] !== undefined && categoryStrength[cat] <= 0.5;
 
-  if (weak('reserva') || (!categoryStrength && LOW_WEALTH.includes(patrimonio))) {
+  if (weak('reserva')) {
     return {
       priority: 'Reserva de emergência',
       recommendation:
@@ -47,6 +52,16 @@ export function personalizeRecommendation({ patrimonio, renda, objetivo, categor
       priority: 'Direcionamento de longo prazo',
       recommendation:
         'Como aposentadoria está entre suas prioridades, o próximo passo é entender se o ritmo atual de construção patrimonial está alinhado à renda futura desejada.',
+    };
+  }
+
+  // Fallback mais fraco (inferência a partir só da faixa de patrimônio) —
+  // verificado por último para não abafar sinais mais específicos acima.
+  if (!categoryStrength && LOW_WEALTH.includes(patrimonio)) {
+    return {
+      priority: 'Reserva de emergência',
+      recommendation:
+        'Antes de acelerar outras frentes, vale priorizar uma reserva de emergência compatível com o seu momento — ela é a base que dá segurança para o restante da estratégia.',
     };
   }
 
