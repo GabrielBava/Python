@@ -2,6 +2,7 @@ import styles from './About.module.css';
 import PhotoPlaceholder from '../ui/PhotoPlaceholder';
 import Badge from '../ui/Badge';
 import Reveal from '../ui/Reveal';
+import { withBase } from '../../lib/asset';
 
 const PILLARS = ['Clareza', 'Estratégia', 'Organização', 'Patrimônio', 'Proteção', 'Objetivos', 'Acompanhamento'];
 
@@ -13,7 +14,7 @@ export default function About({ id = 'sobre' }) {
           <Reveal>
             <div className={styles.photoFrame}>
               <PhotoPlaceholder
-                src="/images/gabriel-about.jpg"
+                src={withBase('/images/gabriel-about.jpg')}
                 alt="Gabriel Bavaresco"
                 caption="Gabriel Bavaresco"
               />

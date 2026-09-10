@@ -27,7 +27,7 @@ function AnalyticsInit() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <LeadProvider>
         <AnalyticsInit />
         <RouteTracker />

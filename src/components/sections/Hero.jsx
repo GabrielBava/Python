@@ -4,6 +4,7 @@ import PhotoPlaceholder from '../ui/PhotoPlaceholder';
 import Icon from '../ui/Icon';
 import Reveal from '../ui/Reveal';
 import { trackEvent, EVENTS } from '../../lib/analytics';
+import { withBase } from '../../lib/asset';
 
 export default function Hero() {
   return (
@@ -39,7 +40,7 @@ export default function Hero() {
         <Reveal className={styles.photoCol} delay={120}>
           <div className={styles.photoFrame}>
             <PhotoPlaceholder
-              src="/images/gabriel-hero.jpg"
+              src={withBase('/images/gabriel-hero.jpg')}
               alt="Gabriel Bavaresco, planejador financeiro"
               caption="Gabriel Bavaresco"
             />
